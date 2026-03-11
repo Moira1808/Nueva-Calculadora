@@ -3,42 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P&S Shoe Spa | Calculadora</title>
+    <title>Calculadora de Precios</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <main class="calculator-container">
-        <header class="calc-header">
-            <h1>P&S Shoe Spa</h1>
-            <p>Calculadora de Servicios</p>
-        </header>
-
-        <section class="input-section">
-            <label for="tasa">Tasa de Cambio (Bs.):</label>
+    <div class="calculator-card">
+        <h2>Calculadora de Precios</h2>
+        
+        <div class="input-group highlight">
+            <label for="tasa">Tasa de Cambio (Bs):</label>
             <input type="number" id="tasa" placeholder="Ej. 36.50" step="0.01" inputmode="decimal">
-        </section>
+        </div>
 
-        <section class="services-section">
-            <h2>Nuestros Servicios</h2>
-            
-            <div class="service-card">
-                <span class="service-name">Limpieza Básica ($5)</span>
-                <span class="service-price" data-usd="5">Bs. 0.00</span>
-            </div>
+        <div class="divider"></div>
 
-            <div class="service-card">
-                <span class="service-name">Limpieza Profunda ($10)</span>
-                <span class="service-price" data-usd="10">Bs. 0.00</span>
+        <div class="conversion-section">
+            <div class="input-group">
+                <label for="usd">Monto en Dólares ($):</label>
+                <input type="number" id="usd" placeholder="0.00" inputmode="decimal">
             </div>
+            <div class="result-box">
+                <span>Equivale a:</span>
+                <span id="resultadoBs" class="result-value">Bs 0.00</span>
+            </div>
+        </div>
 
-            <div class="service-card">
-                <span class="service-name">Restauración de Color ($15)</span>
-                <span class="service-price" data-usd="15">Bs. 0.00</span>
+        <div class="divider"></div>
+
+        <div class="conversion-section">
+            <div class="input-group">
+                <label for="bs">Monto en Bolívares (Bs):</label>
+                <input type="number" id="bs" placeholder="0.00" inputmode="decimal">
             </div>
-        </section>
-    </main>
+            <div class="result-box">
+                <span>Equivale a:</span>
+                <span id="resultadoUsd" class="result-value">$ 0.00</span>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
