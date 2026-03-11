@@ -1,13 +1,12 @@
-/* Reiniciamos los márgenes por defecto */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: #f4f7f6;
+    background-color: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,83 +15,77 @@ body {
     color: #333;
 }
 
-.calculator-container {
+.calculator-card {
     background-color: #ffffff;
     width: 100%;
     max-width: 400px;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 25px;
 }
 
-.calc-header {
+h2 {
     text-align: center;
-    margin-bottom: 25px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #1a1a1a;
 }
 
-.calc-header h1 {
-    font-size: 24px;
-    color: #2c3e50;
-    margin-bottom: 5px;
-}
-
-.calc-header p {
-    font-size: 14px;
-    color: #7f8c8d;
-}
-
-.input-section {
+.input-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
-.input-section label {
+.input-group label {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
     margin-bottom: 8px;
-    color: #2c3e50;
+    color: #555;
 }
 
-.input-section input {
-    padding: 12px 15px;
+.input-group input {
+    padding: 12px;
     font-size: 16px;
-    border: 2px solid #e0e6ed;
+    border: 1px solid #ccc;
     border-radius: 8px;
     outline: none;
-    transition: border-color 0.3s ease;
 }
 
-.input-section input:focus {
-    border-color: #3498db;
+.input-group input:focus {
+    border-color: #007bff;
 }
 
-.services-section h2 {
-    font-size: 16px;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #ecf0f1;
-    padding-bottom: 5px;
-}
-
-.service-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.highlight {
     background-color: #f8f9fa;
     padding: 15px;
     border-radius: 8px;
-    margin-bottom: 10px;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid #007bff;
 }
 
-.service-name {
+.divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 20px 0;
+}
+
+.result-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e9ecef;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.result-box span {
     font-size: 14px;
-    font-weight: 600;
+    color: #555;
 }
 
-.service-price {
-    font-size: 16px;
-    font-weight: 700;
-    color: #27ae60;
+.result-value {
+    font-size: 18px !important;
+    font-weight: bold;
+    color: #28a745 !important;
 }
