@@ -1,42 +1,23 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const inputTasa = document.getElementById("tasa");
-    const inputUsd = document.getElementById("usd");
-    const inputBs = document.getElementById("bs");
-    const resultadoBs = document.getElementById("resultadoBs");
-    const resultadoUsd = document.getElementById("resultadoUsd");
+function calcularPrecio() {
+    // Obtener valores de los campos
+    const tasa = document.getElementById('tasa').value;
+    const precioDolar = document.getElementById('precioDolar').value;
+    const resultadoArea = document.getElementById('resultadoArea');
+    const displayBs = document.getElementById('precioBs');
 
-    // Cargar la tasa guardada al abrir la página
-    if (localStorage.getItem("tasaGuardada")) {
-        inputTasa.value = localStorage.getItem("tasaGuardada");
+    // Validar que los campos no estén vacíos
+    if (tasa > 0 && precioDolar > 0) {
+        const calculo = tasa * precioDolar;
+        
+        // Formatear a 2 decimales y mostrar
+        displayBs.innerText = calculo.toLocaleString('es-VE', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+        
+        // Mostrar la tarjeta de resultado con animación simple
+        resultadoArea.style.display = 'block';
+    } else {
+        alert("Por favor, ingresa valores válidos en ambos campos.");
     }
-
-    // Función para calcular de Dólares a Bolívares
-    const calcularUsdABs = () => {
-        const tasa = parseFloat(inputTasa.value) || 0;
-        const usd = parseFloat(inputUsd.value) || 0;
-        const totalBs = (usd * tasa).toFixed(2);
-        resultadoBs.textContent = `Bs ${totalBs}`;
-    };
-
-    // Función para calcular de Bolívares a Dólares
-    const calcularBsAUsd = () => {
-        const tasa = parseFloat(inputTasa.value) || 0;
-        const bs = parseFloat(inputBs.value) || 0;
-        let totalUsd = 0;
-        if (tasa > 0) {
-            totalUsd = (bs / tasa).toFixed(2);
-        }
-        resultadoUsd.textContent = `$ ${totalUsd}`;
-    };
-
-    // Actualizar todo si cambia la tasa
-    inputTasa.addEventListener("input", () => {
-        localStorage.setItem("tasaGuardada", inputTasa.value);
-        calcularUsdABs();
-        calcularBsAUsd();
-    });
-
-    // Calcular en vivo cuando escribes los montos
-    inputUsd.addEventListener("input", calcularUsdABs);
-    inputBs.addEventListener("input", calcularBsAUsd);
-});
+}
