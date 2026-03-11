@@ -3,46 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Precios</title>
+    <title>Calculadora de Precios Pro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="calculator-card">
-        <h2>Calculadora de Precios</h2>
+    <div class="container">
+        <h1>Calculadora de Precios</h1>
         
-        <div class="input-group highlight">
-            <label for="tasa">Tasa de Cambio (Bs):</label>
-            <input type="number" id="tasa" placeholder="Ej. 36.50" step="0.01" inputmode="decimal">
+        <div class="input-group">
+            <label for="tasa">Tasa de Cambio (BS por $):</label>
+            <input type="number" id="tasa" placeholder="Ej: 36.50" step="0.01">
         </div>
 
-        <div class="divider"></div>
-
-        <div class="conversion-section">
-            <div class="input-group">
-                <label for="usd">Monto en Dólares ($):</label>
-                <input type="number" id="usd" placeholder="0.00" inputmode="decimal">
-            </div>
-            <div class="result-box">
-                <span>Equivale a:</span>
-                <span id="resultadoBs" class="result-value">Bs 0.00</span>
-            </div>
+        <div class="input-group">
+            <label for="precioDolar">Precio en Dólares ($):</label>
+            <input type="number" id="precioDolar" placeholder="Monto en $" step="0.01">
         </div>
 
-        <div class="divider"></div>
+        <button onclick="calcularPrecio()">Calcular conversion</button>
 
-        <div class="conversion-section">
-            <div class="input-group">
-                <label for="bs">Monto en Bolívares (Bs):</label>
-                <input type="number" id="bs" placeholder="0.00" inputmode="decimal">
-            </div>
-            <div class="result-box">
-                <span>Equivale a:</span>
-                <span id="resultadoUsd" class="result-value">$ 0.00</span>
+        <div class="result-card" id="resultadoArea" style="display: none;">
+            <h3>Resultado:</h3>
+            <div class="result-value">
+                <span id="precioBs">0.00</span> <small>BS</small>
             </div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
