@@ -1,29 +1,36 @@
-function calcularPrecio() {
-    // 1. Capturamos los elementos del DOM
+function calcularTabla() {
+    // 1. Obtener la tasa ingresada
     const inputTasa = document.getElementById('tasa');
-    const inputPrecioDolar = document.getElementById('precioDolar');
-    const displayResultado = document.getElementById('precioBs');
-    const tarjetaResultado = document.getElementById('resultadoArea');
-
-    // 2. Convertimos los valores a números flotantes
     const tasa = parseFloat(inputTasa.value);
-    const precioDolar = parseFloat(inputPrecioDolar.value);
 
-    // 3. Validamos que los números sean correctos
-    if (isNaN(tasa) || isNaN(precioDolar) || tasa <= 0 || precioDolar <= 0) {
-        alert("Por favor, introduce montos válidos mayores a cero.");
+    // 2. Validar que la tasa sea un número correcto
+    if (isNaN(tasa) || tasa <= 0) {
+        alert("Por favor, ingresa una tasa de cambio válida (mayor a 0).");
         return;
     }
 
-    // 4. Realizamos la operación matemática básica
-    const resultadoFinal = tasa * precioDolar;
+    // 3. Seleccionar todas las filas que están dentro de la tabla
+    const filas = document.querySelectorAll('#tablaServicios tbody tr');
 
-    // 5. Mostramos el resultado con formato de moneda (2 decimales)
-    displayResultado.textContent = resultadoFinal.toLocaleString('es-VE', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+    // 4. Recorrer cada fila para hacer el cálculo individual
+    filas.forEach(fila => {
+        // Buscar el input de dólares y la celda de bolívares en ESTA fila específica
+        const inputDolar = fila.querySelector('.precio-dolar');
+        const celdaBs = fila.querySelector('.precio-bs');
+        
+        const precioDolar = parseFloat(inputDolar.value);
+
+        // Si el precio en dólares es válido, calculamos
+        if (!isNaN(precioDolar) && precioDolar >= 0) {
+            const convertido = precioDolar * tasa;
+            
+            // Mostrar resultado formateado con 2 decimales y el indicativo 'BS'
+            celdaBs.textContent = convertido.toLocaleString('es-VE', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }) + ' BS';
+        } else {
+            celdaBs.textContent = "0.00 BS";
+        }
     });
-
-    // 6. Hacemos visible la tarjeta de resultado
-    tarjetaResultado.style.display = 'block';
 }
