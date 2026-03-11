@@ -1,14 +1,13 @@
 :root {
-    --primary-lila: #9b59b6;
-    --soft-lila: #f3e5f5;
-    --dark-lila: #6a1b9a;
-    --bg-color: #f8f9fa;
+    --primary-lila: #a29bfe; /* Lila suave */
+    --dark-lila: #6c5ce7;    /* Lila intenso */
+    --bg-lila: #f3f0ff;      /* Fondo lavanda */
     --text-color: #2d3436;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--soft-lila);
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg-lila);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,73 +17,84 @@ body {
 
 .container {
     background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(106, 27, 154, 0.1);
-    width: 100%;
-    max-width: 400px;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(108, 92, 231, 0.15);
+    width: 90%;
+    max-width: 380px;
+    border: 1px solid rgba(162, 155, 254, 0.3);
 }
 
 h1 {
     color: var(--dark-lila);
     text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
 }
 
 .input-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     color: var(--text-color);
-    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 input {
     width: 100%;
     padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
+    border: 2px solid #eee;
+    border-radius: 10px;
     box-sizing: border-box;
-    transition: border-color 0.3s;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
 input:focus {
     border-color: var(--primary-lila);
     outline: none;
+    box-shadow: 0 0 8px rgba(162, 155, 254, 0.4);
 }
 
 button {
     width: 100%;
-    background-color: var(--primary-lila);
+    background: linear-gradient(135deg, var(--primary-lila), var(--dark-lila));
     color: white;
     border: none;
-    padding: 14px;
-    border-radius: 8px;
+    padding: 15px;
+    border-radius: 10px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s;
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 button:hover {
-    background-color: var(--dark-lila);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
 }
 
 .result-card {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background-color: var(--soft-lila);
-    border-left: 5px solid var(--primary-lila);
-    border-radius: 5px;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f7ff;
+    border-radius: 12px;
     text-align: center;
+    border: 2px dashed var(--primary-lila);
+    animation: fadeIn 0.5s ease-in;
 }
 
 .result-value {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2.2rem;
+    font-weight: 800;
     color: var(--dark-lila);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
