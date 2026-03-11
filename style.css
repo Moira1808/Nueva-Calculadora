@@ -1,8 +1,9 @@
 :root {
-    --primary-lila: #a29bfe; /* Lila suave */
-    --dark-lila: #6c5ce7;    /* Lila intenso */
-    --bg-lila: #f3f0ff;      /* Fondo lavanda */
+    --primary-lila: #a29bfe; 
+    --dark-lila: #6c5ce7;    
+    --bg-lila: #f3f0ff;      
     --text-color: #2d3436;
+    --border-color: #e0e0e0;
 }
 
 body {
@@ -11,29 +12,38 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .container {
     background: white;
-    padding: 2.5rem;
+    padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(108, 92, 231, 0.15);
-    width: 90%;
-    max-width: 380px;
+    width: 100%;
+    max-width: 600px; /* Más ancho para acomodar la tabla */
     border: 1px solid rgba(162, 155, 254, 0.3);
 }
 
 h1 {
     color: var(--dark-lila);
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-weight: 600;
 }
 
+.top-section {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
 .input-group {
-    margin-bottom: 1.5rem;
+    flex: 1;
 }
 
 label {
@@ -41,36 +51,37 @@ label {
     margin-bottom: 0.6rem;
     color: var(--text-color);
     font-size: 0.9rem;
+    font-weight: bold;
 }
 
-input {
+input[type="number"] {
     width: 100%;
     padding: 12px;
-    border: 2px solid #eee;
+    border: 2px solid var(--border-color);
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 1rem;
     transition: all 0.3s ease;
 }
 
-input:focus {
+input[type="number"]:focus {
     border-color: var(--primary-lila);
     outline: none;
     box-shadow: 0 0 8px rgba(162, 155, 254, 0.4);
 }
 
 button {
-    width: 100%;
     background: linear-gradient(135deg, var(--primary-lila), var(--dark-lila));
     color: white;
     border: none;
-    padding: 15px;
+    padding: 14px 20px;
     border-radius: 10px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
     transition: transform 0.2s, box-shadow 0.2s;
+    height: 47px; /* Para alinear con el input */
 }
 
 button:hover {
@@ -78,23 +89,61 @@ button:hover {
     box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
 }
 
-.result-card {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: #f8f7ff;
-    border-radius: 12px;
-    text-align: center;
-    border: 2px dashed var(--primary-lila);
-    animation: fadeIn 0.5s ease-in;
+/* Estilos de la Tabla */
+.table-container {
+    overflow-x: auto;
 }
 
-.result-value {
-    font-size: 2.2rem;
-    font-weight: 800;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--bg-lila);
     color: var(--dark-lila);
+    font-weight: 600;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+tr:hover {
+    background-color: #fcfbZm;
+}
+
+.input-dolar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.input-dolar-wrapper input {
+    width: 80px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.precio-bs {
+    font-weight: bold;
+    color: var(--dark-lila);
+    font-size: 1.1rem;
+}
+
+/* Diseño responsivo para celulares */
+@media (max-width: 480px) {
+    .top-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    button {
+        width: 100%;
+    }
 }
